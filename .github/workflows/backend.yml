@@ -1,0 +1,52 @@
+name: Django CI/CD
+
+on: [push, pull_request]
+
+jobs:
+  checking:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Copy env file
+        run: cp backend/template.env backend/.env
+      - name: Install production dependencies
+        run: pip install -r backend/requirements/prod.txt
+      - name: Check for pending migrations
+        run: cd backend/project && python manage.py makemigrations --check --dry-run
+
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install linting dependencies
+        run: pip install -r backend/requirements/dev.txt
+      - name: Lint with ruff
+        run: cd backend && ruff check .
+
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Copy env file
+        run: cp backend/template.env backend/.env
+      - name: Install prod dependencies
+        run: pip install -r backend/requirements/prod.txt
+      - name: Test production environment
+        run: cd backend/project && DJANGO_DEBUG=False python manage.py test
+      - name: Install dev dependencies
+        run: pip install -r backend/requirements/dev.txt
+      - name: Test development environment
+        run: cd backend/project && DJANGO_DEBUG=True python manage.py test
