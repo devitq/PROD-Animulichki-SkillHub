@@ -1,13 +1,13 @@
-name: Django CI
+name: Django CI/CD
 
 on: [push, pull_request]
 
 jobs:
   migrations:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     env:
-      DJANGO_DEBUG: False
+      DJANGO_DEBUG: True
 
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
         run: cd backend/project && python manage.py makemigrations --check --dry-run
 
   linting:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: migrations
 
     steps:
@@ -40,7 +40,7 @@ jobs:
     needs: linting
 
     env:
-      DJANGO_DEBUG: False
+      DJANGO_DEBUG: True
 
     steps:
       - uses: actions/checkout@v3
@@ -54,7 +54,7 @@ jobs:
         run: cd backend/project && python manage.py test
   
   build_and_push:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: testing
 
     steps:
