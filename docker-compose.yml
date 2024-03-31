@@ -20,7 +20,7 @@ services:
 
   backend:
     build: ./backend
-    container_name: itqdev/skillhub-backend
+    container_name: backend
     depends_on:
       postgres:
         condition: service_healthy
@@ -43,7 +43,7 @@ services:
       - 8080:8080
   
   frontend:
-    container_name: itqdev/skillhub-backend
+    container_name: frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
