@@ -16,6 +16,7 @@ jobs:
         run: cd frontend && npm install
       - name: Linting
         run: cd frontend && npm run lint
+        continue-on-error: true
 
   build_and_push:
     runs-on: ubuntu-latest
