@@ -1,6 +1,6 @@
 black
 sort-requirements
 ruff==0.3.4
+django-debug-toolbar==4.3.0
 
--r prod.txt
 -r test.txt
