@@ -12,6 +12,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18'
+      - name: Change directory
+        run: cd frontend
       - name: Install dependencies
         run: npm install
       - name: Linting
@@ -28,6 +30,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18'
+      - name: Change directory
+        run: cd frontend
       - name: Install dependencies
         run: npm install
       - name: Build
@@ -40,5 +44,5 @@ jobs:
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
       - name: Build and push Docker image
         run: |
-          docker build -t skillhub/frontend frontend/
-          docker push skillhub/frontend
+          docker build -t skillhub-backend frontend/
+          docker push skillhub-backend

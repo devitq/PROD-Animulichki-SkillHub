@@ -66,6 +66,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
       - name: Build Docker image
-        run: docker build -t skillhub/backend backend/
+        run: docker build -t skillhub_backend backend/
       - name: Push Docker image
-        run: docker push skillhub/backend
+        run: docker push skillhub_backend
