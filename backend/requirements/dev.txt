@@ -1,6 +1,4 @@
-black
-sort-requirements
-ruff==0.3.4
+django-debug-toolbar
 
 -r prod.txt
--r test.txt
+-r lint.txt

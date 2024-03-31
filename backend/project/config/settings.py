@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # third party apps
     "rest_framework",
     "rest_framework_simplejwt",
+    "corsheaders",
     "drf_yasg",
     # project apps
     "users.apps.UsersConfig",
@@ -63,6 +64,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -151,3 +154,7 @@ REST_FRAMEWORK = {
 
 if DEBUG and not (TESTING or MIGRATING):
     register_debug_toolbar()
+
+CORS_ALLOWED_ORIGINS = [
+    "http://158.160.56.239:8080",
+]
