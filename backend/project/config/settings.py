@@ -157,4 +157,5 @@ if DEBUG and not (TESTING or MIGRATING):
 
 CORS_ALLOWED_ORIGINS = [
     "http://158.160.56.239:8080",
+    "http://158.160.56.239:3000",
 ]
