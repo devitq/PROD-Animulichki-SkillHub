@@ -1,12 +1,13 @@
-from users.models import User
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+from users.models import User
 
 from teams.models import Team
-from rest_framework.viewsets import ModelViewSet
 from teams.serializers import TeamSerializer
-from rest_framework.permissions import IsAuthenticated
+
 
 class AddUserToTeam(APIView):
     def post(self, request, team_id, user_id):  # noqa: ARG002
