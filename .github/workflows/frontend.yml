@@ -1,6 +1,10 @@
 name: Frontend CI/CD
 
-on: [push, pull_request]
+on:
+    workflow_run:
+      workflows: ["Django CI/CD"]
+      types:
+        - completed
 
 jobs:
   linting:

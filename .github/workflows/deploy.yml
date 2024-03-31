@@ -2,7 +2,7 @@ name: Deployment
 
 on:
   workflow_run:
-    workflows: ["Django CI/CD", "Frontend CI/CD"]
+    workflows: ["Frontend CI/CD"]
     types:
       - completed
 
@@ -15,4 +15,4 @@ jobs:
       - uses: actions/checkout@v3
       - name: Pull Docker images and start containers
         run: |
-          docker compose up -d --build
+          sudo docker compose up -d --build
