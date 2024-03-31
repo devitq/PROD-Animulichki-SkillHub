@@ -48,15 +48,11 @@ class Team(models.Model):
 
     members = models.ManyToManyField(
         users.models.User,
-        blank=True,
-        unique=True,
         verbose_name="участники",
     )
 
     vacancies = models.ManyToManyField(
         Vacancy,
-        blank=True,
-        unique=True,
         verbose_name="вакансии",
     )
 
@@ -90,6 +86,7 @@ class Team(models.Model):
     author = models.ForeignKey(
         users.models.User,
         on_delete=models.CASCADE,
+        related_name="teams",
     )
 
     def __str__(self):

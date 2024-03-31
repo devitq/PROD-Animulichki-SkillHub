@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     # project apps
     "users.apps.UsersConfig",
     "notifications.apps.NotificationsConfig",
+    "teams.apps.TeamsConfig",
 ]
 
 MIDDLEWARE = [
@@ -155,7 +156,4 @@ REST_FRAMEWORK = {
 if DEBUG and not (TESTING or MIGRATING):
     register_debug_toolbar()
 
-CORS_ALLOWED_ORIGINS = [
-    "http://158.160.56.239:8080",
-    "http://158.160.56.239:3000",
-]
+CORS_ORIGIN_ALLOW_ALL = True
