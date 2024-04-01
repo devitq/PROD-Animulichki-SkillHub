@@ -24,9 +24,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    restart: unless-stopped
-    expose:
-      - 8000
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
@@ -68,5 +65,4 @@ services:
 
 volumes:
   postgres_data:
-  redis_data:
   pgadmin_data:

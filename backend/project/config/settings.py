@@ -156,6 +156,8 @@ REST_FRAMEWORK = {
 
 APPEND_SLASH = False
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 if DEBUG and not (TESTING or MIGRATING):
     INSTALLED_APPS.append("debug_toolbar")
     MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")

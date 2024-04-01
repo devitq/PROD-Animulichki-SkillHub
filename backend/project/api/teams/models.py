@@ -8,7 +8,11 @@ class Vacancy(models.Model):
     name = models.CharField(
         max_length=255,
     )
-    age_restriction = models.DateField(
+    start_date = models.DateField(
+        blank=True,
+        null=True,
+    )
+    end_date = models.DateField(
         blank=True,
         null=True,
     )
@@ -72,6 +76,7 @@ class Team(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
+        related_name="teams"
     )
 
     def __str__(self):
