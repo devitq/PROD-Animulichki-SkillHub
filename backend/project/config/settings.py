@@ -1,5 +1,6 @@
 import pathlib
 import sys
+from datetime import timedelta
 
 import environs
 
@@ -54,7 +55,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -130,15 +130,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
-USE_TZ = True
-
 USE_I18N = True
 
-STATIC_URL = "static/"
+USE_TZ = True
+TIME_ZONE = "UTC"
 
+STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "static"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -149,14 +146,19 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend"
     ],
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "api.users.authentication.JWTAuthentication",
-    ),
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
 }
 
-APPEND_SLASH = False
-
 CORS_ORIGIN_ALLOW_ALL = True
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
+}
+
 
 if DEBUG and not (TESTING or MIGRATING):
     INSTALLED_APPS.append("debug_toolbar")

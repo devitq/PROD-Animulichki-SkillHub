@@ -1,79 +1,60 @@
-from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.hashers import check_password, make_password
 from rest_framework import serializers
 
 from api.users.models import User
 
 
-class UserRegistrationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = [
-            "first_name",
-            "last_name",
-            "username",
-            "email",
-            "password",
-            "country",
-            "city",
-        ]
-
-    def validate_password(self, value):
-        validate_password(value)
-
-        return value
-
-
-class UserLoginSerializer(serializers.Serializer):
-    remember_me = serializers.BooleanField(default=False, required=False)
-    username = serializers.CharField()
-    password = serializers.CharField()
-
-
-class UserProfileSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            "first_name",
-            "last_name",
-            "username",
             "email",
             "birthday",
+            "avatar",
             "country",
             "city",
             "bio",
-            "avatar",
             "experience",
+            "password",
+            "first_name",
+            "last_name",
             "specialization",
             "achievements",
+            "username",
             "skills",
         )
 
+    extra_kwargs = {"password": {"write_only": True}}
 
-class UpdateProfileSerializer(serializers.ModelSerializer):
+    def validate(self, attrs):
+        if User.objects.filter(username=attrs["username"]).exists():
+            raise serializers.ValidationError(
+                {"username": "Username already exists"}
+            )
+        return super().validate(attrs)
+
+    def create(self, validated_data):
+        validated_data["password"] = make_password(
+            validated_data["password"],
+        )
+        return super().create(validated_data)
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    old_password = serializers.CharField(write_only=True)
+    new_password = serializers.CharField(source="password", write_only=True)
+
     class Meta:
         model = User
-        fields = [
-            "countryCode",
-            "isPublic",
-            "phone",
-            "image",
-        ]
+        fields = ("old_password", "new_password")
 
-    def to_representation(self, instance):
-        data = super().to_representation(instance)
-        if data["image"] is None:
-            del data["image"]
-        if data["phone"] is None:
-            del data["phone"]
-        return data
-
-
-class PasswordChangeSerializer(serializers.Serializer):
-    # ruff: noqa: N815
-    old_password = serializers.CharField(required=True)
-    new_password = serializers.CharField(required=True)
-
-    def validate_password(self, value):
-        validate_password(value)
-
+    def validate_old_password(self, value):
+        if not check_password(value, self.instance.password):
+            msg = "Wrong password"
+            raise serializers.ValidationError(msg)
         return value
+
+    def update(self, instance, validated_data):
+        instance.set_password(validated_data["password"])
+        instance.save()
+        return instance
