@@ -21,7 +21,7 @@ const AuthForm = () => {
                     </TabsList>
                     <TabsContent value="account" >
                         <form className="flex flex-col gap-y-1" onSubmit={submitLogin}>
-                            <Input type="email" name="email" placeholder="Email" />
+                        <Input type="text" name="username" placeholder="Username" />
                             <Input type="password" name="password" placeholder="Password" />
                             <Button className="mt-3">{t("buttonLoginInSystem")}</Button>
                         </form>
