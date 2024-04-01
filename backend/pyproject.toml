@@ -1,0 +1,10 @@
+[tool.ruff]
+line-length = 79
+exclude = ["migrations"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D", "ANN", "EXE002", "RUF012", "RUF001", "COM812", "ISC001"]
+
+[tool.ruff.format]
+skip-magic-trailing-comma = false

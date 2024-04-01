@@ -1,0 +1,4 @@
+django-debug-toolbar==4.3.0
+
+-r test.txt
+-r lint.txt
