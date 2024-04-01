@@ -1,15 +1,15 @@
 dump:
-	@cd project && python -Xutf8 manage.py dumpdata users --format json --indent 4 -o fixtures/users.json
+	@cd project && python -Xutf8 manage.py dumpdata --format json --indent 4 -o fixtures/data.json
 
 load:
-	@cd project && python -Xutf8 manage.py loaddata fixtures/users.json
+	@cd project && python -Xutf8 manage.py loaddata fixtures/data.json
 
 mig:
 	@cd project && python manage.py makemigrations
 	@cd project && python manage.py migrate
 
 check: test
-	@ruff check
+	@ruff check --fix
 
 test:
 	@cd project && python manage.py test
@@ -29,9 +29,5 @@ loc-c:
 help:
 	@cd project && python manage.py help
 
-fix:
-	ruff check --fix
+sort:
 	sort-requirements requirements/prod.txt requirements/test.txt requirements/dev.txt
-
-req:
-	@pip install -r requirements/dev.txt

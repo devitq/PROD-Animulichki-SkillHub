@@ -14,31 +14,23 @@ class Notification(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="notifications",
-        verbose_name="пользователь",
     )
     title = models.CharField(
         max_length=150,
-        verbose_name="заголовок",
         null=False,
     )
     content = models.TextField(
-        verbose_name="содержание",
+        verbose_name="content",
         null=False,
     )
     read = models.BooleanField(
-        "дата создания",
         default=False,
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="дата создания",
     )
 
     objects = NotificationManager()
-
-    class Meta:
-        verbose_name = "уведомление"
-        verbose_name_plural = "уведомления"
 
     def __str__(self):
         return self.title

@@ -1,0 +1,18 @@
+name: Deployment
+
+on:
+  workflow_run:
+    workflows: ["Frontend CI/CD"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} && ${{ github.ref == 'refs/heads/main' }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Pull Docker images and start containers
+        run: |
+          sudo docker compose up -d --build

@@ -1,12 +1,10 @@
+from backend.project.users.models import User
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.viewsets import ModelViewSet
-from users.models import User
-
 from teams.models import Team
-from teams.serializers import TeamSerializer
+
+from .serializers import TeamSerializer
 
 
 class AddUserToTeam(APIView):
@@ -26,11 +24,3 @@ class AddUserToTeam(APIView):
         team.members.add(user)
         team_serializer = TeamSerializer(team)
         return Response(team_serializer.data, status=status.HTTP_200_OK)
-
-
-class TeamsViewSet(ModelViewSet):
-    http_method_names = ("get",)
-
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
-    permission_classes = [IsAuthenticated]
