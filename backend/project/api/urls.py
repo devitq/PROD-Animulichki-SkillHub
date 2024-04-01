@@ -12,6 +12,13 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("ping", include("api.ping.urls")),
     path("auth", include("api.users.urls")),
+    path(
+        "",
+        include(
+            "rest_framework.urls",
+            namespace="rest_framework",
+        ),
+    ),
     # API documentation
     path(
         "swagger<format>/",

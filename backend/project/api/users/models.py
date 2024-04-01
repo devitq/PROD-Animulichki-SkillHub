@@ -7,6 +7,10 @@ from django.db import models
 from api.core.models import AbstractTag
 
 
+def get_file_path(filename):
+    return f"achievements/{uuid.uuid4()}/{filename}"
+
+
 class Skill(AbstractTag):
     level = models.IntegerField(
         validators=[
@@ -17,18 +21,12 @@ class Skill(AbstractTag):
 
 
 class Achievements(models.Model):
-    def get_file_path(self, filename):
-        folder_name = str(uuid.uuid4())
-        return f"achievements/{folder_name}/{filename}"
-
-    file = models.FileField(  # noqa: DJ012
-        upload_to=get_file_path,
-    )
+    file = models.FileField(upload_to=get_file_path)
     info = models.TextField(
         max_length=255,
     )
 
-    def __str__(self):  # noqa: DJ012
+    def __str__(self):
         return self.info
 
 
