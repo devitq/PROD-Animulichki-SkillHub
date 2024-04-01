@@ -42,7 +42,7 @@ class SignupUserApiView(APIView):
         raise ValidationError(serializer.errors)
 
 
-class SigninUserApiView(APIView):
+class LoginUserApiView(APIView):
     def post(self, request):
         serializer = UserLoginSerializer(data=request.data)
 

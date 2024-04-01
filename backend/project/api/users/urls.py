@@ -4,14 +4,14 @@ import api.users.views
 
 urlpatterns = [
     path(
-        "/sign-up/",
+        "/signup/",
         api.users.views.SignupUserApiView.as_view(),
-        name="sign-up",
+        name="signup",
     ),
     path(
-        "/sign-in/",
-        api.users.views.SigninUserApiView.as_view(),
-        name="sign-in",
+        "/login/",
+        api.users.views.LoginUserApiView.as_view(),
+        name="login",
     ),
     path(
         "/me/profile/",
@@ -19,7 +19,7 @@ urlpatterns = [
         name="profile-me",
     ),
     path(
-        "/me/updatePassword/",
+        "/me/password/",
         api.users.views.PasswordChangeApiView.as_view(),
         name="password-change",
     ),
