@@ -1,35 +1,26 @@
-import users.models
 from django.core import validators
 from django.db import models
+
+from api.users.models import Skill, Specialization, User
 
 
 class Vacancy(models.Model):
     name = models.CharField(
         max_length=255,
-        verbose_name="название вакансии",
     )
-    start_date = models.DateField(
-        verbose_name="дата начала диапазона возраста участников",
-        blank=True,
-        null=True,
-    )
-
-    end_date = models.DateField(
-        verbose_name="дата конец диапазона возраста участников",
+    age_restriction = models.DateField(
         blank=True,
         null=True,
     )
     specialization = models.ForeignKey(
-        users.models.Specialization,
+        Specialization,
         on_delete=models.CASCADE,
         blank=True,
-        verbose_name="специализация",
         null=True,
     )
     skills = models.ManyToManyField(
-        users.models.Skill,
+        Skill,
         blank=True,
-        verbose_name="Технологии",
     )
 
     def __str__(self):
@@ -37,33 +28,24 @@ class Vacancy(models.Model):
 
 
 class Team(models.Model):
-    description = models.TextField(
-        verbose_name="описание команды",
-    )
-
-    name = models.CharField(
-        verbose_name="название команды",
-        max_length=255,
-    )
+    name = models.CharField(max_length=255)
+    description = models.TextField()
 
     members = models.ManyToManyField(
-        users.models.User,
+        User,
         blank=True,
         unique=True,
-        verbose_name="участники",
     )
 
     vacancies = models.ManyToManyField(
         Vacancy,
         blank=True,
         unique=True,
-        verbose_name="вакансии",
     )
 
     avatar = models.ImageField(
         upload_to="teams_avatars",
         blank=True,
-        verbose_name="аватарка",
     )
 
     count_of_members = models.IntegerField(
@@ -88,7 +70,7 @@ class Team(models.Model):
     )
 
     author = models.ForeignKey(
-        users.models.User,
+        User,
         on_delete=models.CASCADE,
     )
 

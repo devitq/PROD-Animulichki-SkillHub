@@ -33,26 +33,21 @@ MIGRATING = len(sys.argv) > 1 and (
 )
 
 
-def register_debug_toolbar():
-    INSTALLED_APPS.append("debug_toolbar")
-    MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
-
-
 INSTALLED_APPS = [
-    # django apps
+    # Built-in apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # third party apps
+    # Third-party apps
     "rest_framework",
     "rest_framework_simplejwt",
     "drf_yasg",
-    # project apps
-    "users.apps.UsersConfig",
-    "notifications.apps.NotificationsConfig",
+    # Developed apps
+    "api.ping.apps.PingConfig",
+    "api.users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
@@ -131,23 +126,33 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = "ru-ru"
+LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
+
 USE_TZ = True
+
 USE_I18N = True
 
 STATIC_URL = "static/"
+
+STATIC_ROOT = BASE_DIR / "static"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend"
     ],
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "api.users.authentication.JWTAuthentication",
+    ),
 }
 
+APPEND_SLASH = False
+
 if DEBUG and not (TESTING or MIGRATING):
-    register_debug_toolbar()
+    INSTALLED_APPS.append("debug_toolbar")
+    MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")

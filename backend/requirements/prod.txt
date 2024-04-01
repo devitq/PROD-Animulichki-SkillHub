@@ -9,3 +9,4 @@ django-filter==24.2
 Pillow==10.2.0
 drf-yasg==1.21.7
 setuptools
+bcrypt==4.1.2
