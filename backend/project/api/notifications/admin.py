@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from api.notifications import models
 from api.notifications.forms import (
     CreateNotificationAdminForm,

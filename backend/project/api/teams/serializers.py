@@ -1,6 +1,8 @@
-from rest_framework import serializers
-from api.teams.models import Team, Vacancy
 from datetime import datetime, timedelta, timezone
+
+from rest_framework import serializers
+
+from api.teams.models import Team, Vacancy
 
 
 class TeamSerializer(serializers.ModelSerializer):

@@ -1,10 +1,11 @@
 from rest_framework import status
+from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
 from api.teams.models import Team
-from api.users.models import User
-from rest_framework.generics import CreateAPIView
 from api.teams.serializers import TeamSerializer, VacancySerializer
+from api.users.models import User
 
 
 class AddUserToTeam(APIView):
