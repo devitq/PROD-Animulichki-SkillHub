@@ -1,5 +1,5 @@
 from django import forms
-from notifications.models import Notification
+from api.notifications.models import Notification
 
 
 class EditNotificationAdminForm(forms.ModelForm):

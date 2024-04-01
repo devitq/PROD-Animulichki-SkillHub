@@ -19,6 +19,7 @@ urlpatterns = [
             namespace="rest_framework",
         ),
     ),
+    path("teams", include("api.teams.urls")),
     # API documentation
     path(
         "swagger<format>/",

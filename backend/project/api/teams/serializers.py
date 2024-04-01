@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from teams.models import Team, Vacancy
+from api.teams.models import Team, Vacancy
 from datetime import datetime, timedelta, timezone
 
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from notifications import models
-from notifications.forms import (
+from api.notifications import models
+from api.notifications.forms import (
     CreateNotificationAdminForm,
     EditNotificationAdminForm,
 )

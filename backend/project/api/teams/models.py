@@ -44,13 +44,11 @@ class Team(models.Model):
     members = models.ManyToManyField(
         User,
         blank=True,
-        unique=True,
     )
 
     vacancies = models.ManyToManyField(
         Vacancy,
         blank=True,
-        unique=True,
     )
 
     avatar = models.ImageField(
