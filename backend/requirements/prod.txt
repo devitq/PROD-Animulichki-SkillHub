@@ -8,5 +8,6 @@ djangorestframework-simplejwt==5.3.1
 django-filter==24.2
 Pillow==10.2.0
 drf-yasg==1.21.7
+django-cors-headers
 setuptools
 bcrypt==4.1.2
