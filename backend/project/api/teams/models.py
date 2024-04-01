@@ -25,6 +25,12 @@ class Vacancy(models.Model):
     skills = models.ManyToManyField(
         Skill,
         blank=True,
+        related_name="vacancies",
+    )
+    users = models.ManyToManyField(
+        User,
+        blank=True,
+        related_name="vacancies",
     )
 
     def __str__(self):
@@ -74,9 +80,7 @@ class Team(models.Model):
     )
 
     author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="teams"
+        User, on_delete=models.CASCADE, related_name="teams"
     )
 
     def __str__(self):

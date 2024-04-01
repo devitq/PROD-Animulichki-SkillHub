@@ -1,10 +1,10 @@
-from backend.project.users.models import User
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from teams.models import Team
-
-from api.teams.serializers import TeamSerializer
+from users.models import User
+from rest_framework.generics import CreateAPIView
+from api.teams.serializers import TeamSerializer, VacancySerializer
 
 
 class AddUserToTeam(APIView):
@@ -24,3 +24,8 @@ class AddUserToTeam(APIView):
         team.members.add(user)
         team_serializer = TeamSerializer(team)
         return Response(team_serializer.data, status=status.HTTP_200_OK)
+
+
+class CreateVacancy(CreateAPIView):
+    http_method_names = ("post",)
+    serializer_class = VacancySerializer
