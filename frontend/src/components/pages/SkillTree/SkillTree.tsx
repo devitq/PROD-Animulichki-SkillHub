@@ -1,10 +1,9 @@
 import { Input } from "../../ui/input";
-import VacancyCard from "../../entities/VacancyCard/VacancyCard";
 import { Textarea } from "../../shared/ui/textarea";
 import { Button } from "../../shared/ui/button";
 import less from "./SkillTree.module.less"
 import { Switch } from "../../shared/ui/switch";
-import { addEvent, submitRegister } from "../../widgets/Header/AuthAPI";
+import { addEvent, deleteEvent, submitRegister } from "../../widgets/Header/AuthAPI";
 import {
     Card,
     CardContent,
@@ -62,8 +61,8 @@ const SkillTree = () => {
                                 <CardTitle className="p-0">{event.title}</CardTitle>
                                 <CardDescription>Дата начала: {event.start_date}</CardDescription>
                             </div>
-                            {false && (
-                                <Button size="icon" variant="ghost" ><TrashIcon /></Button>
+                            {true && (
+                                <Button size="icon" variant="ghost" onClick={() => {deleteEvent(event.id)}}><TrashIcon /></Button>
                             )}
                         </CardHeader>
                         <CardContent className="p-0 mt-4" >

@@ -105,3 +105,31 @@ export const addEvent = (e: FormEvent<HTMLFormElement>) => {
         console.error('Возникла ошибка с регой:', error);
     });
 }
+export const deleteEvent = (id:string) => {
+
+    fetch(`${API_BASE}${API_EVENT}${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    })
+    .then(response => {
+        console.log(response.status);
+        if (response.ok) {
+            console.log('Удален:', response.headers.get('Location'));
+            window.location.reload();
+            return response.json();
+        } else {
+            return response.text().then(errorMessage => {
+                throw new Error('Код ошибки: ' + response.status + '. ' + errorMessage + '. Дата ошибки: ' + response.headers.get('Date'));
+            });
+        }
+    })
+    .then(data => {
+        console.log('Успешно:', data);
+    })
+    .catch(error => {
+        console.error('Возникла ошибка с удалением:', error);
+    });
+}
+
