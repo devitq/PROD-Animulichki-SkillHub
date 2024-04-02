@@ -1,7 +1,6 @@
 from django.db import models
 
 from api.core.models import BaseModel
-from api.tree.models import Tree
 
 
 class Event(BaseModel):
@@ -51,11 +50,7 @@ class Event(BaseModel):
         default="everyone",
     )
 
-    tree = models.ForeignKey(
-        Tree,
-        on_delete=models.CASCADE,
-        related_name="events",
-    )
+    tree = models.JSONField()
 
     def __str__(self):
         return self.title

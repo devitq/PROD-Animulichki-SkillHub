@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     "api",
     "api.users",
     "api.events",
-    "api.tree",
 ]
 
 MIDDLEWARE = [
