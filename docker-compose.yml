@@ -38,6 +38,7 @@ services:
       DJANGO_DEBUG: ${DJANGO_DEBUG:-false}
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-*}
       DJANGO_INTERNAL_IPS: ${DJANGO_INTERNAL_IPS:-127.0.0.1}
+      DJANGO_CSRF_TRUSTED_ORIGINS: ${DJANGO_CSRF_TRUSTED_ORIGINS:-https://animulichki.ru}
     expose:
       - 8080
     command:
