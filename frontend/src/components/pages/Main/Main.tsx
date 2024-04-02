@@ -67,7 +67,7 @@ const Main = () => {
                                     <DialogTitle><h1 className={less["title-form"]}>{t("entrance")}</h1></DialogTitle>
                                     <DialogDescription>
                                         <form className={less["input-form"]} onSubmit={(event) => submitRegister(event, navigate)}>
-                                            <div className={less["novis"]}><Input type="text" name="event_id" value={event.id} placeholder="Event" /></div>
+                                            <div className={less["novis"]}><Input type="text" name="event" value={event.id} placeholder="Event" /></div>
                                             <Input type="text" name="first_name" placeholder="First name" />
                                             <Input type="text" name="last_name" placeholder="Last name" />
                                             <Input type="date" name="birth_date" placeholder="Date" />

@@ -58,8 +58,9 @@ export const submitRegister = (e: FormEvent<HTMLFormElement>, navigate: Function
             navigate('../successful');
             return response.json(); 
         } else {
-
-            throw new Error('Код ошибки: ' + response.status);
+            return response.text().then(errorMessage => {
+                throw new Error('Код ошибки: ' + response.status + '. ' + errorMessage + '. Дата ошибки: ' + response.headers.get('Date'));
+            });
         }
     })
     .then(data => {
