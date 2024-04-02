@@ -4,6 +4,7 @@ import less from "./Admin.module.less"
 import PlayerCard from "../../entities/PlayerCard/PlayerCard"
 import { useTranslation } from "react-i18next"
 import CreateTeam from "../../widgets/CreateTeams/CreateTeams"
+import { Link } from "react-router-dom"
 
 const AdminPage = () =>{
     const { t } = useTranslation();
@@ -11,7 +12,8 @@ const AdminPage = () =>{
         <ResizablePanelGroup direction="horizontal">
   <ResizablePanel defaultSize={95} maxSize={95}>
     <div className={less["main-admin"]}>
-    <Button>{t("EditTree")}</Button>
+    <Button asChild><Link to={"skill-tree"}>{t("EditTree")}</Link></Button>
+
     <CreateTeam/>
     </div>
 

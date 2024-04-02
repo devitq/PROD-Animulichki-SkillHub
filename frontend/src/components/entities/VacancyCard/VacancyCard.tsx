@@ -17,7 +17,7 @@ const VacancyCard = () =>{
   <CardContent className="p-0 mt-4">
     <p>Lorem ipsum dolor sit amet consectetur. Lorem justo sit nunc commodo nam fames dui ac ullamcorper. Laoreet faucibus semper adipiscing lobortis.</p>
   </CardContent>
-      <Button  className="mt-10">{t("respondRequest")}</Button>
+      <Button  className="mt-5">{t("respondRequest")}</Button>
   </div>
 </Card>
 

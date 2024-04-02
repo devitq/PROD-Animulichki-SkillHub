@@ -9,11 +9,9 @@ function General() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
        <Header />
-      <div className={less['page-maket']}>
-      <div className={less["main-content"]}>
+      <main className={less["main-content"]}>
       <Outlet/>
-    </div>
-    </div>
+    </main>
     </ThemeProvider>
 
   )

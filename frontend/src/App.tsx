@@ -11,47 +11,53 @@ import Teams from "./components/pages/Teams/Teams";
 import MyTeams from "./components/pages/MyTeams/MyTeams";
 import Successful from "./components/pages/Successful/Successful";
 import AdminPage from "./components/pages/Admin/Admin";
+import SkillTree from "./components/pages/SkillTree/SkillTree";
+import AdminEventPage from "./components/pages/AdminEventPage/AdminEventPage";
 
 const router = createBrowserRouter([
-  {
-    path: "",
-    element: <TemplateWeb />,
-    children: [{
-      path: "",
-      element: <Landing />,
-    }]
-  },
-  {
-    path: "*",
-    element: <General />,
-    children: [{
-      path: "login",
-      element: <Main />,
-    },
-    // {
-    //   path: "teams",
-    //   element: <Teams />,
-    // },
-    // {
-    //   path: "my-teams",
-    //   element: <MyTeams />,
-    // },
     {
-      path: "successful",
-      element: <Successful />,
-    }]
-  },
+      path: "",
+      element: <TemplateWeb />,
+      children: [
+        {
+          path: "",
+          element: <Landing />
+        }
+      ]
+    },
+    {
+      path: "*",
+      element: <General />,
+      children: [
+        {
+          path: "login",
+          element: <Main />
+        },
+        {
+          path: "successful",
+          element: <Successful />
+        }
+      ]
+    },
     {
       path: "dash",
       element: <General />,
-      children: [{
-      path: "admin",
-      element: <AdminPage />,
-    },
-  ]
-  },
-])
-
+      children: [
+        {
+          path: "eventlist",
+          element: <AdminEventPage />
+        },
+        {
+          path: "admin",
+          element: <AdminPage />
+        },
+        {
+          path: "skill-tree",
+          element: <SkillTree />
+        }
+      ]
+    }  
+  ])
 function App() {
   return (
     <>

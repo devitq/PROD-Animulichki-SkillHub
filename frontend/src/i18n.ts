@@ -43,7 +43,8 @@ i18n
         download: "Скачать",
         descDownload: "Скачать XLS таблицу",
         open: "Открыть",
-        
+        createEvent: "Создать ивент",
+
 
         }
       },
@@ -80,7 +81,7 @@ i18n
             download: "Download",
             descDownload: "Download the XLS table",
             open: "Open",
-
+            createEvent: "Сreate Event",
              }
       },
       zh: {
@@ -115,6 +116,8 @@ i18n
             download: "下载",
             descDownload: "下载XLS表",
             open: "打开",
+            createEvent: "创建一个事件",
+
         }
       },
     }
