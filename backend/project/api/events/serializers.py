@@ -4,7 +4,7 @@ from api.events.models import Event, Tree
 
 
 class EventSerializer(serializers.ModelSerializer):
-    tree = serializers.IntegerField(write_only=True)
+    tree = serializers.JSONField(write_only=True)
 
     class Meta:
         model = Event
