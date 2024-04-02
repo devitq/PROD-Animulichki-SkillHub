@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { API_BASE, API_CREATE_TOKEN, API_USERS } from "../../app/APIurl";
+import { API_BASE, API_CREATE_TOKEN, API_EVENT, API_USERS } from "../../app/APIurl";
   
 //логин
 export const submitLogin = (e: FormEvent<HTMLFormElement>) => {
@@ -60,6 +60,40 @@ export const submitRegister = (e: FormEvent<HTMLFormElement>, navigate: Function
         } else {
 
             throw new Error('Код ошибки: ' + response.status);
+        }
+    })
+    .then(data => {
+        console.log('Успешно:', data);
+    })
+    .catch(error => {
+        console.error('Возникла ошибка с регой:', error);
+    });
+}
+
+//добавление ивента
+export const addEvent = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const formProps = Object.fromEntries(formData);
+    console.log(formProps);
+    formProps.tree = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
+
+    fetch(`${API_BASE}${API_EVENT}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formProps)
+    })
+    .then(response => {
+        console.log(response.status);
+        if (response.ok) {
+            console.log('Создан:', response.headers.get('Location'));
+            return response.json();
+        } else {
+            return response.text().then(errorMessage => {
+                throw new Error('Код ошибки: ' + response.status + '. ' + errorMessage + '. Дата ошибки: ' + response.headers.get('Date'));
+            });
         }
     })
     .then(data => {

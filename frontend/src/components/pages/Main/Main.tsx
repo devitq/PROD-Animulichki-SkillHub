@@ -45,7 +45,7 @@ const Main = () => {
   return (
     <div className={less["general-content"]}>
       <div className={less["general-left"]}>
-        {/* {events.map((event) => (
+        {events.map((event) => (
                 <Card className={`${less["card"]} flex flex-row `}>
                     <div className="flex flex-col">
                         <CardHeader className={less["header"]}>
@@ -83,7 +83,7 @@ const Main = () => {
 
                     </div>
                 </Card>
-            ))} */}
+            ))}
         <Button variant="link" asChild>
           <Link to={"/dash/admin"}>{t("iorganizer")}</Link>
         </Button>
