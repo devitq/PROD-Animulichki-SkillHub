@@ -1,5 +1,8 @@
 
+import io
+
 import pandas as pd
+from django.http import FileResponse
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -55,3 +58,25 @@ class RegisterUsersFromExcelView(APIView):
             return Response(
                 {"error": str(e)}, status=status.HTTP_400_BAD_REQUEST
             )
+
+
+class DownloadUsersFromExcelView(APIView):
+    def get(self, _, event_id):
+        try:
+            users = Event.objects.get(pk=event_id).users
+        except Event.DoesNotExist:
+            return Response(
+                {"error": "Event does not exist"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        serializer = UserSerializer(users, many=True)
+        data = serializer.data
+
+        data = pd.DataFrame(data)
+
+        excel_data = io.BytesIO()
+        data.to_excel(excel_data, index=False)
+        excel_data.seek(0)
+
+        return FileResponse(excel_data, filename="users.xlsx")
