@@ -1,6 +1,7 @@
 from django.db import models
 
 from api.core.models import BaseModel
+from api.tree.models import Tree
 
 
 class Event(BaseModel):
@@ -49,6 +50,12 @@ class Event(BaseModel):
         max_length=64,
         choices=LIMITATIONS,
         default="everyone",
+    )
+
+    tree = models.ForeignKey(
+        Tree,
+        on_delete=models.CASCADE,
+        related_name="events",
     )
 
     def __str__(self):
