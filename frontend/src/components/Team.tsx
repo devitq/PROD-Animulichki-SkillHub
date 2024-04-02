@@ -25,7 +25,7 @@ const teamList: TeamProps[] = [
   {
     imageUrl: "https://raw.githubusercontent.com/devitq/devitq/main/logo.png",
     name: "ITQ",
-    position: "Backend & Frontend Developer & Dev OPS",
+    position: "Backend & Frontend Developer",
     socialNetworks: [
       { name: "GitHub", url: "https://github.com/devitq" },
     ],

@@ -119,7 +119,7 @@ export const Navbar = () => {
               to={"login"}
               className={`border ${buttonVariants({ variant: "default" })}`}
             >
-              Login
+              Signup
             </Link>
           </div>
         </NavigationMenuList>
