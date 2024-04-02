@@ -1,6 +1,5 @@
 import { FormEvent } from "react";
-import { API_BASE, API_CREATE_TOKEN, API_REG } from "../../app/APIurl";
-import { useNavigate } from 'react-router-dom';
+import { API_BASE, API_CREATE_TOKEN, API_USERS } from "../../app/APIurl";
   
 //логин
 export const submitLogin = (e: FormEvent<HTMLFormElement>) => {
@@ -42,8 +41,10 @@ export const submitRegister = (e: FormEvent<HTMLFormElement>, navigate: Function
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const formProps = Object.fromEntries(formData);
+    console.log(formProps)
 
-    fetch(`${API_BASE}${API_REG}`, {
+
+    fetch(`${API_BASE}${API_USERS}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
