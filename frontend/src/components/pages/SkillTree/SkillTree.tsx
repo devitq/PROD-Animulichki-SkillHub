@@ -16,7 +16,6 @@ const SkillTree = () => {
         <div className={less["general"]}>
             <div className={less["left"]}>
                 <form className={less["input-form"]} onSubmit={(event) => addEvent(event)}>
-                    <div className={less["novis"]}><Input type="text" name="event_id" placeholder="Event" /></div>
                     <Input type="text" name="title" placeholder="Event name" />
                     <Input type="text" name="description" placeholder="Last name" />
                     <Input type="date" name="start_date" placeholder="Start date" />
