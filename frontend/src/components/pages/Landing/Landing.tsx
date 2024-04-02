@@ -1,22 +1,41 @@
-import less from "./Landing.module.less"
-import '../../../i18n'
-import { Button } from "../../shared/ui/button"
-import { Label } from "@radix-ui/react-menubar"
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { About } from "../../About";
+import { Cta } from "../../Cta";
+import { FAQ } from "../../FAQ";
+import { Features } from "../../Features";
+import { Footer } from "../../Footer";
+import { Hero } from "../../Hero";
+import { HowItWorks } from "../../HowItWorks";
+import { Navbar } from "../../Navbar";
+import { Newsletter } from "../../Newsletter";
+import { Pricing } from "../../Pricing";
+import { ScrollToTop } from "../../ScrollToTop";
+import { Services } from "../../Services";
+import { Sponsors } from "../../Sponsors";
+import { Team } from "../../Team";
+import { Testimonials } from "../../Testimonials";
+import "../../../App.css";
+import { ThemeProvider } from "../../theme-provider.tsx";
 
 function Landing() {
-    const { t } = useTranslation();
-
   return (
-      <><div className={less.block}></div>
-        <h1 className={less.landing}>{t("landingLogo")}</h1>
-        <div className={less["info-block"]}>
-            <Label className={less["desc-text"]}>{t("landingDesc")}</Label>
-            <Button variant="outline" asChild><Link to={"login"}> {t("buttonGoTOReg")}</Link></Button>
-        </div>
-        </>
-  )
+    <ThemeProvider>
+      <Navbar />
+      <Hero />
+      <Sponsors />
+      <About />
+      <HowItWorks />
+      <Features />
+      <Services />
+      <Cta />
+      <Testimonials />
+      <Team />
+      <Pricing />
+      <Newsletter />
+      <FAQ />
+      <Footer />
+      <ScrollToTop />
+    </ThemeProvider>
+  );
 }
 
-export default Landing
+export default Landing;
