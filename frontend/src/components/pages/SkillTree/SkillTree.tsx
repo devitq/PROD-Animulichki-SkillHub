@@ -64,11 +64,8 @@ const SkillTree = () => {
           onSubmit={(event) => {
             addEvent(event);
             toast({
-              title: "Scheduled: Catch up ",
-              description: "Friday, February 10, 2023 at 5:57 PM",
-              action: (
-                <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-              ),
+              title: "Event created!",
+              description: `Event ${event.title} created successfully!`,
             });
           }}
         >
@@ -104,7 +101,7 @@ const SkillTree = () => {
         </form>
       </div>
       <div className={less["right"]}>
-        {events.map((event) => (
+        {/* {events.map((event) => (
           <Card className={`${less["card"]} flex flex-row `}>
             <div className="flex flex-col">
               <CardHeader className={less["header"]}>
@@ -129,8 +126,9 @@ const SkillTree = () => {
               </Button>
             </div>
           </Card>
-        ))}
+        ))} */}
       </div>
+      <div className="shadow"></div>
     </div>
   );
 };
