@@ -1,21 +1,24 @@
 .divv{
     margin: 0;
 }
+.novis{
+    opacity: 0;
+    visibility: hidden;
+}
 .general-content{
     margin-left: 20px;
     display: flex;
-    height: 90vh;
 }
 .general-left{
     width: 50%; 
-    display: flex;
-    justify-content: center;   
-    align-items: center;
-    flex-direction: column;
+    padding: 10px;
+    padding-top: 80px;
     border-right-width: 1px;
 }
 .general-right{
+    padding-top: 80px;
     margin-left: 20px;
+    width: 30%;
     
 }
 .input-form{
@@ -32,9 +35,24 @@
 .title-form{
     font-size: 30px;
 }
+.card{
+    max-width: 800px;
+    padding: 20px;
+    margin-bottom: 10px;
+
+}
+.up{
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 0;
+}
 @media (max-width: 820px) {
     .general-left{
         width: 100%; 
     }
 }
-
