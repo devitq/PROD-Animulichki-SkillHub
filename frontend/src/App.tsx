@@ -47,7 +47,12 @@ const router = createBrowserRouter([
         },
         {
           path: "admin",
-          element: <AdminPage />
+          element: <AdminPage />,
+          children: [
+            {
+              path: "*",
+              element: <AdminPage />
+            }],
         },
         {
           path: "skill-tree",
