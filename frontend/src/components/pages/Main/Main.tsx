@@ -1,4 +1,4 @@
-import less from "./Main.module.less"
+import less from "./Main.module.less";
 import { useTranslation } from "react-i18next";
 import { Input } from "../../shared/ui/input";
 import { submitRegister } from "../../widgets/Header/AuthAPI";
@@ -8,31 +8,44 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { deleteEvent, eventList } from "../AdminEventPage/AdminEventAPI";
 import VacancyCard from "../../entities/VacancyCard/VacancyCard";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../../ui/card";
 import { TrashIcon } from "lucide-react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../../shared/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../../shared/ui/dialog";
 import { t } from "i18next";
 
-
-
 const Main = () => {
-    const { t } = useTranslation();
-    const navigate = useNavigate();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
 
-    const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
 
-    useEffect(() => {
-        eventList().then((data) => {
-            setEvents(data)
-        }).catch(error => {
-            console.error('Возникла ошибка с получением:', error)
-        })
-    }, []);
+  useEffect(() => {
+    eventList()
+      .then((data) => {
+        setEvents(data);
+      })
+      .catch((error) => {
+        console.error("Возникла ошибка с получением:", error);
+      });
+  }, []);
 
-return (
+  return (
     <div className={less["general-content"]}>
-        <div className={less["general-left"]}>
-            {events.map((event) => (
+      <div className={less["general-left"]}>
+        {/* {events.map((event) => (
                 <Card className={`${less["card"]} flex flex-row `}>
                     <div className="flex flex-col">
                         <CardHeader className={less["header"]}>
@@ -70,15 +83,14 @@ return (
 
                     </div>
                 </Card>
-            ))}
-            <Button variant="link" asChild><Link to={"/dash/admin"}>{t("iorganizer")}</Link></Button>
-
-        </div>
-        <div className={less["general-right"] + " shadow"}>
-
-        </div>
-
+            ))} */}
+        <Button variant="link" asChild>
+          <Link to={"/dash/admin"}>{t("iorganizer")}</Link>
+        </Button>
+      </div>
+      <div className={less["general-right"] + " shadow"}></div>
     </div>
-)
-}
+  );
+};
+
 export default Main;
