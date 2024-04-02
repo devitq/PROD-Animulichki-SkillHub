@@ -22,7 +22,6 @@ class UserViewSet(ReadOnlyModelViewSet):
     serializer_class = UserSerializer
 
 
-#! Починить вьюшку, сделать экспорт
 class RegisterUsersFromExcelView(APIView):
     def post(self, request, event_id):
         try:
@@ -43,14 +42,13 @@ class RegisterUsersFromExcelView(APIView):
         try:
             df = pd.read_excel(excel_file)
 
-            for index, row in df.iterrows():
-                # Создаем нового пользователя
+            for _, row in df.iterrows():
                 user = User.objects.create(
-                    first_name=row["First Name"],
-                    last_name=row["Last Name"],
-                    email=row["Email"],
-                    birth_date=row["Birth Date"],
-                    bio=row["Bio"],
+                    first_name=row["first_name"],
+                    last_name=row["last_name"],
+                    email=row["email"],
+                    birth_date=row["birth_date"],
+                    bio=row["bio"],
                 )
 
                 event.users.add(user)

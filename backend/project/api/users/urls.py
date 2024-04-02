@@ -8,7 +8,7 @@ from api.users.views import (
 app_name = "users"
 
 urlpatterns = [
-    path("register/<event_id>/", RegisterUserView.as_view(), name="register"),
+    path("register/", RegisterUserView.as_view(), name="register"),
     path(
         "upload/excel/<event_id>/",
         RegisterUsersFromExcelView.as_view(),

@@ -5,15 +5,15 @@ from api.users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
+    event_id = serializers.IntegerField()
+
     class Meta:
         model = User
         fields = "__all__"
 
     def create(self, validated_data):
         try:
-            event = Event.objects.get(
-                pk=self.context["view"].kwargs.get("event_id")
-            )
+            event = Event.objects.get(pk=validated_data.pop("event_id"))
         except Event.DoesNotExist as e:
             msg = "Event does not exist"
             raise serializers.ValidationError(msg) from e
