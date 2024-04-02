@@ -12,7 +12,7 @@ DEFAULT_HOSTS = ["127.0.0.1", "localhost"]
 
 with env.prefixed("DJANGO_"):
     SECRET_KEY = env("SECRET_KEY", "change-me")
-    DEBUG = env.bool("DEBUG", False)
+    DEBUG = env.bool("DEBUG", True)
     ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", DEFAULT_HOSTS)
     INTERNAL_IPS = env.list("INTERNAL_IPS", ALLOWED_HOSTS)
     CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", [])

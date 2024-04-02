@@ -9,6 +9,7 @@ class User(BaseModel):
     email = models.EmailField()
     birth_date = models.DateTimeField()
     bio = models.TextField()
+    skills = models.JSONField(default=dict)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
