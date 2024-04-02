@@ -3,7 +3,6 @@ from rest_framework import routers
 
 from api.users.views import (
     RegisterUsersFromExcelView,
-    RegisterUserView,
     UserViewSet,
 )
 
@@ -15,7 +14,6 @@ router.register("", UserViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
-    path("register/", RegisterUserView.as_view(), name="register"),
     path(
         "upload/excel/<event_id>/",
         RegisterUsersFromExcelView.as_view(),

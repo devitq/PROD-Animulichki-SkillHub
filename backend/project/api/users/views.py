@@ -1,22 +1,16 @@
 
 import pandas as pd
 from rest_framework import status
-from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework.viewsets import ModelViewSet
 
 from api.events.models import Event
 from api.users.models import User
 from api.users.serializers import UserSerializer
 
 
-class RegisterUserView(CreateAPIView):
-    http_method_names = ("post",)
-    serializer_class = UserSerializer
-
-
-class UserViewSet(ReadOnlyModelViewSet):
+class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
