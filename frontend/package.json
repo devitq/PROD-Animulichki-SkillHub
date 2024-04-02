@@ -69,11 +69,6 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-<<<<<<< HEAD
-=======
-    "prettier": "^3.2.5",
-    "@vitejs/plugin-react": "^4.2.0",
->>>>>>> 8d6323a364a5b30124a1b7ce60c092cb70e50a9e
     "postcss": "^8.4.32",
     "prettier": "^3.2.5",
     "tailwindcss": "^3.3.5",
