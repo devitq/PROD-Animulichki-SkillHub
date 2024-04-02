@@ -1,1 +1,1 @@
-# SkillHub Frontend
+# SkillHub Frontend folder
