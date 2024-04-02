@@ -2,6 +2,7 @@ from django.urls import include, path
 from rest_framework import routers
 
 from api.users.views import (
+    DownloadUsersFromExcelView,
     RegisterUsersFromExcelView,
     UserViewSet,
 )
@@ -19,4 +20,9 @@ urlpatterns = [
         RegisterUsersFromExcelView.as_view(),
         name="excel-upload",
     ),
+    path(
+        "download/excel/<event_id>/",
+        DownloadUsersFromExcelView.as_view(),
+        name="excel-download",
+    )
 ]

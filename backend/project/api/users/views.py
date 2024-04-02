@@ -1,5 +1,8 @@
 
+import io
+
 import pandas as pd
+from django.http import FileResponse
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -8,10 +11,6 @@ from rest_framework.viewsets import ModelViewSet
 from api.events.models import Event
 from api.users.models import User
 from api.users.serializers import UserSerializer
-from django.http import HttpResponse
-from rest_framework.views import APIView
-from rest_framework.response import Response
-import pandas as pd
 
 
 class UserViewSet(ModelViewSet):
@@ -61,40 +60,23 @@ class RegisterUsersFromExcelView(APIView):
             )
 
 
-class ExportUsersExcel(APIView):
-    def get(self, request, event_id):
-        event = Event.objects.get(id=event_id)
+class DownloadUsersFromExcelView(APIView):
+    def get(self, _, event_id):
+        try:
+            users = Event.objects.get(pk=event_id).users
+        except Event.DoesNotExist:
+            return Response(
+                {"error": "Event does not exist"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
 
-        users = event.users.all()
+        serializer = UserSerializer(users, many=True)
+        data = serializer.data
 
-        users_data = {
-            "First Name": [user.first_name for user in users],
-            "Last Name": [user.last_name for user in users],
-            "Email": [user.email for user in users],
-            "Birth Date": [
-                user.birth_date.strftime("%Y-%m-%d") for user in users
-            ],
-            "Bio": [user.bio for user in users],
-        }
-        df = pd.DataFrame(users_data)
+        data = pd.DataFrame(data)
 
-        excel_file = pd.ExcelWriter("event_users.xlsx", engine="xlsxwriter")
-        df.to_excel(excel_file, index=False, sheet_name="Users")
-        excel_file.save()
+        excel_data = io.BytesIO()
+        data.to_excel(excel_data, index=False)
+        excel_data.seek(0)
 
-        with open("event_users.xlsx", "rb") as excel:
-            content = excel.read()
-
-        # Удаляем созданный временный файл
-        import os
-
-        os.remove("event_users.xlsx")
-
-        # Отправляем Excel файл как HttpResponse
-        response = HttpResponse(
-            content, content_type="application/vnd.ms-excel"
-        )
-        response[
-            "Content-Disposition"
-        ] = 'attachment; filename="event_users.xlsx"'
-        return response
+        return FileResponse(excel_data, filename="users.xlsx")
