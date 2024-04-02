@@ -9,28 +9,28 @@ interface FeatureProps {
 
 const features: FeatureProps[] = [
   {
-    icon: <MedalIcon />,
-    title: "Accesibility",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
-  },
-  {
     icon: <MapIcon />,
-    title: "Community",
+    title: "Events",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
-  },
-  {
-    icon: <PlaneIcon />,
-    title: "Scalability",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Organizator creates an event where participants can join.",
   },
   {
     icon: <GiftIcon />,
-    title: "Gamification",
+    title: "Data",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Organizator can import users data from excel or participants can register via form.",
+  },
+  {
+    icon: <PlaneIcon />,
+    title: "Algorythm",
+    description:
+      "Organizator runs algorythm on users data and algrorythm creates dream teams.",
+  },
+  {
+    icon: <MedalIcon />,
+    title: "Results",
+    description:
+      "Organizator can view teams and it's strength and participants get email with results.",
   },
 ];
 
@@ -48,8 +48,7 @@ export const HowItWorks = () => {
         Step-by-Step Guide
       </h2>
       <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+        Our service is easy-to-use and intuitive to use.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

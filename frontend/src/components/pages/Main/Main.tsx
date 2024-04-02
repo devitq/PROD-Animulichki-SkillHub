@@ -17,7 +17,7 @@ const Main = () => {
             <div className={less["general-left"]}>
                 <form className={less["input-form"]} onSubmit={(event) => submitRegister(event, navigate)}>
                     <h1 className={less["title-form"]}>{t("entrance")}</h1>
-                    <Input type="text" name="first_name" placeholder="Name" />
+                    <Input type="text" name="first_name" placeholder="First name" />
                     <Input type="text" name="last_name" placeholder="Last name" />
                     <Input type="date" name="birth_date" placeholder="Date" />
                     <Input type="email" name="email" placeholder="Email" />
@@ -26,10 +26,10 @@ const Main = () => {
 
                     <Button>{t("buttonLoginInSystem")}</Button>
                 </form>
-                <Button variant="link"  asChild><Link to={"/dash/admin"}>{t("iorganizer")}</Link></Button>
+                <Button variant="link" asChild><Link to={"/dash/admin"}>{t("iorganizer")}</Link></Button>
 
             </div>
-            <div className={less["general-right"]}>
+            <div className={less["general-right"] + " shadow"}>
             </div>
 
         </div>

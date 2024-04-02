@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Github } from "lucide-react";
 
 interface TeamProps {
   imageUrl: string;
@@ -23,75 +23,44 @@ interface SociaNetworkslProps {
 
 const teamList: TeamProps[] = [
   {
-    imageUrl: "https://i.pravatar.cc/150?img=35",
-    name: "Emma Smith",
-    position: "Product Manager",
+    imageUrl: "https://raw.githubusercontent.com/devitq/devitq/main/logo.png",
+    name: "ITQ",
+    position: "Backend & Frontend Developer",
     socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
-      },
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
-      },
+      { name: "GitHub", url: "https://github.com/devitq" },
     ],
   },
   {
-    imageUrl: "https://i.pravatar.cc/150?img=60",
-    name: "John Doe",
-    position: "Tech Lead",
-    socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
-      },
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
-      },
-    ],
-  },
-  {
-    imageUrl: "https://i.pravatar.cc/150?img=36",
-    name: "Ashley Ross",
-    position: "Frontend Developer",
-    socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
-
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
-      },
-    ],
-  },
-  {
-    imageUrl: "https://i.pravatar.cc/150?img=17",
-    name: "Bruce Rogers",
+    imageUrl: "https://cdn.discordapp.com/avatars/745800190413373472/db4cd19e6d80f9cfa29e09a43ddbcb28",
+    name: "Pigeon",
     position: "Backend Developer",
-    socialNetworks: [
-      { name: "Linkedin", url: "http://linkedin.com" },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
-      },
-    ],
+    socialNetworks: [],
+  },
+  {
+    imageUrl: "https://cdn.discordapp.com/avatars/875043365815717888/2a6ddca40c178c5e91a55c52889f8a98",
+    name: "Timkaoch",
+    position: "Backend Developer",
+    socialNetworks: [],
+  },
+  {
+    imageUrl: "https://cdn.discordapp.com/avatars/743444918197944400/6dcfc04c3931fa5c89e9580eb5f7c655",
+    name: "Data Name ID",
+    position: "Backend Developer",
+    socialNetworks: [],
+  },
+  {
+    imageUrl: "https://cdn.discordapp.com/avatars/545655609005965345/78d2c594eb858d3bb393928a67ef8731",
+    name: "OMGKawaiiQueli!",
+    position: "Frontend Developer",
+    socialNetworks: [],
   },
 ];
 
 export const Team = () => {
   const socialIcon = (iconName: string) => {
     switch (iconName) {
-      case "Linkedin":
-        return <Linkedin size="20" />;
-
-      case "Facebook":
-        return <Facebook size="20" />;
-
-      case "Instagram":
-        return <Instagram size="20" />;
+      case "GitHub":
+        return <Github size="20" />;
     }
   };
 
@@ -108,8 +77,7 @@ export const Team = () => {
       </h2>
 
       <p className="mt-4 mb-10 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+        Our team Animulichki contains 5 dedicated web developers
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10">
@@ -132,7 +100,7 @@ export const Team = () => {
               </CardHeader>
 
               <CardContent className="text-center pb-2">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p></p>
               </CardContent>
 
               <CardFooter>
