@@ -7,8 +7,6 @@ import {
 } from "react-router-dom";
 import Landing from "./components/pages/Landing/Landing";
 import Main from "./components/pages/Main/Main";
-import Teams from "./components/pages/Teams/Teams";
-import MyTeams from "./components/pages/MyTeams/MyTeams";
 import Successful from "./components/pages/Successful/Successful";
 import AdminPage from "./components/pages/Admin/Admin";
 
