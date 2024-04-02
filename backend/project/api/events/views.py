@@ -1,8 +1,9 @@
-from rest_framework.generics import CreateAPIView
+from rest_framework.viewsets import ModelViewSet
 
+from api.events.models import Event
 from api.events.serializers import EventSerializer
 
 
-class CreateEventView(CreateAPIView):
-    http_method_names = ("post",)
+class EventViewSet(ModelViewSet):
+    queryset = Event.objects.all()
     serializer_class = EventSerializer
