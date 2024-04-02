@@ -1,4 +1,3 @@
-from pathlib import Path
 
 import pandas as pd
 from rest_framework import status
@@ -40,9 +39,9 @@ class RegisterUsersFromExcelView(APIView):
             )
 
         try:
-            df = pd.read_excel(excel_file)
+            data = pd.read_excel(excel_file)
 
-            for _, row in df.iterrows():
+            for _, row in data.iterrows():
                 user = User.objects.create(
                     first_name=row["first_name"],
                     last_name=row["last_name"],
@@ -58,7 +57,7 @@ class RegisterUsersFromExcelView(APIView):
                 status=status.HTTP_201_CREATED,
             )
 
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             return Response(
                 {"error": str(e)}, status=status.HTTP_400_BAD_REQUEST
             )
