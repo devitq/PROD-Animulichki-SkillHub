@@ -29,7 +29,7 @@ class RegisterUsersFromExcelView(APIView):
             )
 
         excel_file = request.FILES.get("excel_file")
-        if not excel_file:
+        if excel_file is None:
             return Response(
                 {"error": "No Excel file provided"},
                 status=status.HTTP_400_BAD_REQUEST,

@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import { Facebook, Instagram, Linkedin, Github } from "lucide-react";
+import { Github } from "lucide-react";
 
 interface TeamProps {
   imageUrl: string;
@@ -25,7 +25,7 @@ const teamList: TeamProps[] = [
   {
     imageUrl: "https://raw.githubusercontent.com/devitq/devitq/main/logo.png",
     name: "ITQ",
-    position: "Backend & Frontend Developer",
+    position: "Backend & Frontend Developer & Dev OPS",
     socialNetworks: [
       { name: "GitHub", url: "https://github.com/devitq" },
     ],
