@@ -8,5 +8,9 @@ urlpatterns = [
     path(
         "events/",
         include("api.events.urls", namespace="events"),
+    ),
+    path(
+        "trees/",
+        include("api.tree.urls", namespace="trees"),
     )
 ]

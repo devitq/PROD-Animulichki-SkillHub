@@ -10,7 +10,7 @@ from api.users.views import (
 app_name = "users"
 
 router = routers.DefaultRouter()
-router.register(r"users", UserViewSet)
+router.register("", UserViewSet)
 
 
 urlpatterns = [

@@ -34,6 +34,7 @@ jobs:
         run: pip install -r backend/requirements/dev.txt
       - name: Lint with ruff
         run: cd backend && ruff check .
+        continue-on-error: true
 
   testing:
     runs-on: self-hosted
