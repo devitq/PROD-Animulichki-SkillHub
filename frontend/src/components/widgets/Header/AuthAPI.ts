@@ -90,6 +90,7 @@ export const addEvent = (e: FormEvent<HTMLFormElement>) => {
         console.log(response.status);
         if (response.ok) {
             console.log('Создан:', response.headers.get('Location'));
+            window.location.reload();
             return response.json();
         } else {
             return response.text().then(errorMessage => {

@@ -3,14 +3,42 @@ import VacancyCard from "../../entities/VacancyCard/VacancyCard";
 import { Textarea } from "../../shared/ui/textarea";
 import { Button } from "../../shared/ui/button";
 import less from "./SkillTree.module.less"
-import { t } from "i18next";
 import { Switch } from "../../shared/ui/switch";
-import { addEvent } from "../../widgets/Header/AuthAPI";
-
+import { addEvent, submitRegister } from "../../widgets/Header/AuthAPI";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+  } from "../../ui/card";
+  import { TrashIcon } from "lucide-react";
+  import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "../../shared/ui/dialog";
+  import { t } from "i18next";
+import { useEffect, useState } from "react";
+import { eventList } from "../AdminEventPage/AdminEventAPI";
+import { Link } from "react-router-dom";
 
 const SkillTree = () => {
 
+    const [events, setEvents] = useState<Event[]>([]);
 
+    useEffect(() => {
+      eventList()
+        .then((data) => {
+          setEvents(data);
+        })
+        .catch((error) => {
+          console.error("Возникла ошибка с получением:", error);
+        });
+    }, []);
     
     return (
         <div className={less["general"]}>
@@ -26,8 +54,26 @@ const SkillTree = () => {
                 </form>
             </div>
             <div className={less["right"]}>
-                <VacancyCard ></VacancyCard>
-                <VacancyCard ></VacancyCard>
+            {events.map((event) => (
+                <Card className={`${less["card"]} flex flex-row `}>
+                    <div className="flex flex-col">
+                        <CardHeader className={less["header"]}>
+                            <div className={less["up"]}>
+                                <CardTitle className="p-0">{event.title}</CardTitle>
+                                <CardDescription>Дата начала: {event.start_date}</CardDescription>
+                            </div>
+                            {false && (
+                                <Button size="icon" variant="ghost" ><TrashIcon /></Button>
+                            )}
+                        </CardHeader>
+                        <CardContent className="p-0 mt-4" >
+                            <p>{event.description}</p>
+                        </CardContent>
+                                <Button> <Link to={`../admin/${event.id}`}>Event Management</Link></Button>
+
+                    </div>
+                </Card>
+            ))}
             </div>
         </div>
     );
