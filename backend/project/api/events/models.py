@@ -38,7 +38,6 @@ class Event(BaseModel):
 
     is_online = models.BooleanField(
         default=True,
-        verbose_name="оффлайн или онлайн",
     )
 
     location = models.CharField(
