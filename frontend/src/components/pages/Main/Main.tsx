@@ -68,11 +68,11 @@ const Main = () => {
               <CardContent className="p-0 mt-4">
                 <p>{event.description}</p>
               </CardContent>
-              <Dialog>
+              <Dialog style={{ height: "fixed" }}>
                 <DialogTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2">
                   {t("respondRequest")}
                 </DialogTrigger>
-                <DialogContent className={less["model-content"]}>
+                <DialogContent className={"lg:max-w-screen-lg overflow-y-scroll max-h-screen"}>
                   <DialogHeader>
                     <DialogTitle>
                       <h1 className={less["title-form"]}>{t("entrance")}</h1>

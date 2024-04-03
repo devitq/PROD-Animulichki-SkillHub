@@ -49,13 +49,14 @@ const SkillTree = () => {
             <div className={less["left"]}>
               <h2 className={less["h2"]}>Create event</h2>
                 <form className={less["input-form"]} onSubmit={(event) => addEvent(event)}>
-                    <Input type="text" name="title" placeholder="Event name" />
-                    <Input type="text" name="description" placeholder="Last name" />
+                    <Input type="text" name="title" placeholder="Title" />
                     <Input type="date" name="start_date" placeholder="Start date" />
                     <Input type="date" name="end_date" placeholder="End date" />
                     <Textarea name="description" placeholder="Description" />
-                    <Switch name="is_online"/>
-                    <Button>{t("buttonLoginInSystem")}</Button>
+                    <Textarea name="tree" placeholder="Graph" />
+                    <Switch name="is_online" id="is_online" />
+                    <Label htmlFor="is_online">Is online</Label>
+                    <Button>Create</Button>
                 </form>
             </div>
             <div className={less["right"]}>
