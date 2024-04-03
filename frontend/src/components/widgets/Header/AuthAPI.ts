@@ -78,7 +78,7 @@ export const addEvent = (e: FormEvent<HTMLFormElement>) => {
     const formData = new FormData(e.currentTarget);
     const formProps = Object.fromEntries(formData);
     console.log(formProps);
-    formProps.tree = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
+    formProps.tree = JSON.parse(formProps.tree);
 
     fetch(`${API_BASE}${API_EVENT}`, {
         method: "POST",
