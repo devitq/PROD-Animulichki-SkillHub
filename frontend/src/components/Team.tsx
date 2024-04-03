@@ -50,9 +50,11 @@ const teamList: TeamProps[] = [
   },
   {
     imageUrl: "https://cdn.discordapp.com/avatars/545655609005965345/78d2c594eb858d3bb393928a67ef8731",
-    name: "OMGKawaiiQueli!",
-    position: "Frontend Developer",
-    socialNetworks: [],
+    name: " 👉👈 \n  OMGKawaiiQueli!",
+    position: "Super-duper Main Frontend Developer ",
+    socialNetworks: [
+      { name: "GitHub", url: "https://github.com/cu-e" },
+    ],
   },
 ];
 
