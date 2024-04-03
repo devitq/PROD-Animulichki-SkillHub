@@ -11,4 +11,9 @@ router.register("", EventViewSet)
 urlpatterns = [
     path("", include(router.urls)),
     path("<event_id>/users/", views.EventUsersApiView.as_view(), name="users"),
+    path(
+        "<event_id>/run_algorythm/",
+        views.RunAlgorythmView.as_view(),
+        name="run_algotythm",
+    ),
 ]
