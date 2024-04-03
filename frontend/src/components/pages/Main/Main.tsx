@@ -7,7 +7,7 @@ import { Textarea } from "../../shared/ui/textarea";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { deleteEvent, eventList } from "../AdminEventPage/AdminEventAPI";
-import VacancyCard from "../../entities/VacancyCard/VacancyCard";
+import { CheckboxTree } from "../../features/Skills/Skills";
 import {
   Card,
   CardContent,
@@ -24,12 +24,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../shared/ui/dialog";
-import { t } from "i18next";
 
 const Main = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const [graph, setGraph] = useState({});
   const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
@@ -66,15 +66,16 @@ const Main = () => {
                                 <DialogHeader>
                                     <DialogTitle><h1 className={less["title-form"]}>{t("entrance")}</h1></DialogTitle>
                                     <DialogDescription>
-                                        <form className={less["input-form"]} onSubmit={(event) => submitRegister(event, navigate)}>
+                                        <form className={less["input-form"]} onSubmit={(event) => submitRegister(event, navigate, graph)}>
                                             <div className={less["novis"]}><Input type="text" name="event" value={event.id} placeholder="Event" /></div>
                                             <Input type="text" name="first_name" placeholder="First name" />
                                             <Input type="text" name="last_name" placeholder="Last name" />
                                             <Input type="date" name="birth_date" placeholder="Date" />
                                             <Input type="email" name="email" placeholder="Email" />
                                             <Textarea name="bio" placeholder="About" />
+                                            <CheckboxTree data={event.tree} setGraph={setGraph} />
 
-                                            <Button>{t("buttonLoginInSystem")}</Button>
+                                            <Button>Signup</Button>
                                         </form>
                                     </DialogDescription>
                                 </DialogHeader>
@@ -85,7 +86,7 @@ const Main = () => {
                 </Card>
             ))}
         <Button variant="link" asChild>
-          <Link to={"/dash/skill-tree"}>{t("iorganizer")}</Link>
+          <Link to={"/dash/admin"}>{t("iorganizer")}</Link>
         </Button>
       </div>
       <div className={less["general-right"] + " shadow"}></div>

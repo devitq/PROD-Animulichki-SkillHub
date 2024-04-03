@@ -37,11 +37,12 @@ export const submitLogin = (e: FormEvent<HTMLFormElement>) => {
 }
 
 //регистрация
-export const submitRegister = (e: FormEvent<HTMLFormElement>, navigate: Function) => {
+export const submitRegister = (e: FormEvent<HTMLFormElement>, navigate: Function, graph: JSON) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const formProps = Object.fromEntries(formData);
     console.log(formProps)
+    formProps.skills = JSON.stringify(graph);
 
 
     fetch(`${API_BASE}${API_USERS}`, {
