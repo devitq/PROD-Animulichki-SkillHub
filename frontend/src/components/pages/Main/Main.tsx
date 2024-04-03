@@ -46,45 +46,72 @@ const Main = () => {
     <div className={less["general-content"]}>
       <div className={less["general-left"]}>
         {events.map((event) => (
-                <Card className={`${less["card"]} flex flex-row `}>
-                    <div className="flex flex-col">
-                        <CardHeader className={less["header"]}>
-                            <div className={less["up"]}>
-                                <CardTitle className="p-0">{event.title}</CardTitle>
-                                <CardDescription>Дата начала: {event.start_date}</CardDescription>
-                            </div>
-                            {false && (
-                                <Button size="icon" variant="ghost" onClick={() => deleteEvent(event.id)}><TrashIcon /></Button>
-                            )}
-                        </CardHeader>
-                        <CardContent className="p-0 mt-4" >
-                            <p>{event.description}</p>
-                        </CardContent>
-                        <Dialog>
-                            <DialogTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2">{t("respondRequest")}</DialogTrigger>
-                            <DialogContent>
-                                <DialogHeader>
-                                    <DialogTitle><h1 className={less["title-form"]}>{t("entrance")}</h1></DialogTitle>
-                                    <DialogDescription>
-                                        <form className={less["input-form"]} onSubmit={(event) => submitRegister(event, navigate, graph)}>
-                                            <div className={less["novis"]}><Input type="text" name="event" value={event.id} placeholder="Event" /></div>
-                                            <Input type="text" name="first_name" placeholder="First name" />
-                                            <Input type="text" name="last_name" placeholder="Last name" />
-                                            <Input type="date" name="birth_date" placeholder="Date" />
-                                            <Input type="email" name="email" placeholder="Email" />
-                                            <Textarea name="bio" placeholder="About" />
-                                            <CheckboxTree data={event.tree} setGraph={setGraph} />
-
-                                            <Button>Signup</Button>
-                                        </form>
-                                    </DialogDescription>
-                                </DialogHeader>
-                            </DialogContent>
-                        </Dialog>
-
+          <Card className={`${less["card"]} flex flex-row `}>
+            <div className="flex flex-col">
+              <CardHeader className={less["header"]}>
+                <div className={less["up"]}>
+                  <CardTitle className="p-0">{event.title}</CardTitle>
+                  <CardDescription>
+                    Start Date: {event.start_date}
+                  </CardDescription>
+                </div>
+                {false && (
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    onClick={() => deleteEvent(event.id)}
+                  >
+                    <TrashIcon />
+                  </Button>
+                )}
+              </CardHeader>
+              <CardContent className="p-0 mt-4">
+                <p>{event.description}</p>
+              </CardContent>
+              <Dialog>
+                <DialogTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2">
+                  {t("respondRequest")}
+                </DialogTrigger>
+                <DialogContent className={less["model-content"]}>
+                  <DialogHeader>
+                    <DialogTitle>
+                      <h1 className={less["title-form"]}>{t("entrance")}</h1>
+                    </DialogTitle>
+                  </DialogHeader>
+                  <form
+                    className={less["input-form"]}
+                    onSubmit={(event) => submitRegister(event, navigate, graph)}
+                  >
+                    <div className={less["novis"]}>
+                      <Input
+                        type="text"
+                        name="event"
+                        value={event.id}
+                        placeholder="Event"
+                      />
                     </div>
-                </Card>
-            ))}
+                    <Input
+                      type="text"
+                      name="first_name"
+                      placeholder="First name"
+                    />
+                    <Input
+                      type="text"
+                      name="last_name"
+                      placeholder="Last name"
+                    />
+                    <Input type="date" name="birth_date" placeholder="Date" />
+                    <Input type="email" name="email" placeholder="Email" />
+                    <Textarea name="bio" placeholder="About" />
+                    <CheckboxTree data={event.tree} setGraph={setGraph} />
+
+                    <Button>Signup</Button>
+                  </form>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </Card>
+        ))}
         <Button variant="link" asChild>
           <Link to={"/dash/admin"}>{t("iorganizer")}</Link>
         </Button>

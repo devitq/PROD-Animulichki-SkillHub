@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { API_BASE, API_EVENT } from "../../app/APIurl";
+import { API_BASE, API_EVENT, API_USERS } from "../../app/APIurl";
 
 export const submitAddEvent = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,6 +56,8 @@ export const eventList = () => {
         console.error('Возникла ошибка с получением:', error);
     });
 }
+
+//удалить ивент
 export const deleteEvent = (id:string) => {
      fetch(`${API_BASE}${API_EVENT}${id}`, {
         method: "DELETE",
@@ -73,4 +75,34 @@ export const deleteEvent = (id:string) => {
     .catch(error => {
         console.error('Возникла ошибка с удалением:', error);
     });
+}
+
+//получение списка юзеров
+export const UserList = (id:string) => {
+
+return fetch(`${API_BASE}${API_EVENT}${id}/${API_USERS}`, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+    },
+})
+.then(response => {
+  
+    console.log(response.status);
+
+    if (response.ok) { 
+        console.log('Получил:', response.headers.get('Location'));
+        return response.json(); 
+    } else {
+
+        throw new Error('Код ошибки: ' + response.status);
+    }
+})
+.then(data => {
+    console.log('Успешно:', data);
+    return data
+})
+.catch(error => {
+    console.error('Возникла ошибка с получением:', error);
+});
 }
