@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { ToastAction } from "../../shared/ui/toast";
 import { useToast } from "../../shared/ui/use-toast";
 import { buttonVariants } from "../../ui/button";
-import { addEvent, submitRegister } from "../../widgets/Header/AuthAPI";
+import { addEvent, deleteEvent, submitRegister } from "../../widgets/Header/AuthAPI";
 import {
   Card,
   CardContent,
@@ -53,7 +53,7 @@ const SkillTree = () => {
                     <Input type="date" name="start_date" placeholder="Start date" />
                     <Input type="date" name="end_date" placeholder="End date" />
                     <Textarea name="description" placeholder="Description" />
-                    <Switch/>
+                    <Switch name="is_online"/>
                     <Button>{t("buttonLoginInSystem")}</Button>
                 </form>
             </div>
@@ -63,11 +63,11 @@ const SkillTree = () => {
                     <div className="flex flex-col">
                         <CardHeader className={less["header"]}>
                             <div className={less["up"]}>
-                                <CardTitle className="p-0">{event.title}</CardTitle>
-                                <CardDescription>Дата начала: {event.start_date}</CardDescription>
+                                <CardTitle className={less["title"]}>{event.title}</CardTitle>
+                                <CardDescription>Start date: {event.start_date}</CardDescription>
                             </div>
-                            {false && (
-                                <Button size="icon" variant="ghost" ><TrashIcon /></Button>
+                            {true && (
+                                <Button size="icon" variant="ghost"onClick={() =>{deleteEvent(event.id)}} ><TrashIcon /></Button>
                             )}
                         </CardHeader>
                         <CardContent className="p-0 mt-4" >
