@@ -1,11 +1,9 @@
-import { Button } from "../../shared/ui/button";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "../../shared/ui/resizable";
 import less from "./Admin.module.less";
-import PlayerCard from "../../entities/PlayerCard/PlayerCard";
 import { useTranslation } from "react-i18next";
 import CreateTeam from "../../widgets/CreateTeams/CreateTeams";
 import { UserList } from "../AdminEventPage/AdminEventAPI";
@@ -26,14 +24,15 @@ const AdminPage = () => {
 var index = window.location.pathname.indexOf("/dash/admin/") + "/dash/admin/".length;
 
 var result = window.location.pathname.substring(index);
-
-      UserList(result)
-        .then((data) => {
-          setPlayerList(data);
-        })
-        .catch((error) => {
-          console.error("Возникла ошибка с получением:", error);
-        });
+if(Number(result) > 0){
+  UserList(result)
+  .then((data) => {
+    setPlayerList(data);
+  })
+  .catch((error) => {
+    console.error("Возникла ошибка с получением:", error);
+  });
+}
     }, []);
   return (
     <ResizablePanelGroup className={less["full-content"]} direction="horizontal">
