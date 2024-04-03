@@ -113,7 +113,7 @@ const Main = () => {
           </Card>
         ))}
         <Button variant="link" asChild>
-          <Link to={"/dash/admin"}>{t("iorganizer")}</Link>
+          <Link to={"/dash/skill-tree"}>{t("iorganizer")}</Link>
         </Button>
       </div>
       <div className={less["general-right"] + " shadow"}></div>
