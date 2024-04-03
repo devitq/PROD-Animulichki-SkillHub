@@ -2,10 +2,9 @@ from collections import deque
 
 
 def get_teams(event):  # noqa: C901, PLR0912
-    members_max = 3
-    min_front = 1
+    members_max = 5
+    min_front = 2
     min_back = 2
-
 
     def bfs(tree):
         result = []
@@ -48,9 +47,10 @@ def get_teams(event):  # noqa: C901, PLR0912
     users = {}
 
     for user in db_users:
-        users[str(user.id)] = tuple(bfs(user.skills))
-
+        users[str(user.id)] = tuple(bfs(user.skills)[1:])
+    print(users)
     frontend_users, backend_users = sort_and_divide_users(users)
+    print(frontend_users, backend_users)
     teams = []
     while len(frontend_users) >= min_front and len(backend_users) >= min_back:
         try:

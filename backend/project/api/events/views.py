@@ -5,8 +5,8 @@ from rest_framework.viewsets import ModelViewSet
 
 from api.events.models import Event
 from api.events.serializers import EventSerializer
-from api.users.serializers import UserSerializer
 from api.events.utils import get_teams
+from api.users.serializers import UserSerializer
 
 
 class EventViewSet(ModelViewSet):
