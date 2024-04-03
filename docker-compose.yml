@@ -57,6 +57,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
       - media_volume:/var/html/media/
       - static_volume:/var/html/static/
     depends_on:
