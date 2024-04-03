@@ -1,4 +1,3 @@
-
 import io
 
 import pandas as pd
@@ -16,22 +15,6 @@ from api.users.serializers import UserSerializer
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-
-class UsersByEvent(APIView):
-    def get(self, _, event_id):
-        try:
-            event = Event.objects.get(pk=event_id)
-        except Event.DoesNotExist:
-            return Response(
-                {"error": "Event does not exist"},
-                status=status.HTTP_404_NOT_FOUND,
-            )
-
-        users = event.users.all()
-        serializer = UserSerializer(users, many=True)
-
-        return Response(serializer.data)
 
 
 class RegisterUsersFromExcelView(APIView):

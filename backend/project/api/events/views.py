@@ -27,3 +27,18 @@ class EventUsersApiView(APIView):
         serializer = UserSerializer(users, many=True)
 
         return Response(serializer.data)
+
+
+class RunAlgorythmView(APIView):
+    def post(self, request, event_id):  # noqa: ARG002
+        try:
+            event = Event.objects.get(pk=event_id)
+        except Event.DoesNotExist:
+            return Response(
+                {"error": "Event does not exist"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        event.run_algorythm()
+
+        return Response("ok")

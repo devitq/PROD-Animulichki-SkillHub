@@ -5,7 +5,6 @@ from api.users.views import (
     DownloadUsersFromExcelView,
     RegisterUsersFromExcelView,
     UserViewSet,
-    UsersByEvent,
 )
 
 app_name = "users"
@@ -16,11 +15,6 @@ router.register("", UserViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
-    path(
-        "by-event/<event_id>/",
-        UsersByEvent.as_view(),
-        name="users-by-event",
-    ),
     path(
         "upload/excel/<event_id>/",
         RegisterUsersFromExcelView.as_view(),

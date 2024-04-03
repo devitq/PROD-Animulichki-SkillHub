@@ -54,3 +54,6 @@ class Event(BaseModel):
 
     def __str__(self):
         return self.title
+
+    def run_algorythm(self):
+        pass
