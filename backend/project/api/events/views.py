@@ -6,6 +6,7 @@ from rest_framework.viewsets import ModelViewSet
 from api.events.models import Event
 from api.events.serializers import EventSerializer
 from api.users.serializers import UserSerializer
+from api.events.utils import get_teams
 
 
 class EventViewSet(ModelViewSet):
@@ -38,7 +39,6 @@ class RunAlgorythmView(APIView):
                 {"error": "Event does not exist"},
                 status=status.HTTP_404_NOT_FOUND,
             )
+        teams = get_teams(event)
 
-        event.run_algorythm()
-
-        return Response("ok")
+        return Response(teams)
