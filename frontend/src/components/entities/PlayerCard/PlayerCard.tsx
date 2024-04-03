@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "../../shared/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../../shared/ui/card"
+import { Card, CardHeader, CardTitle, CardContent } from "../../shared/ui/card"
 import less from "./PlayerCard.module.less";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../../shared/ui/dialog";
 import { Separator } from "../../shared/ui/separator";
