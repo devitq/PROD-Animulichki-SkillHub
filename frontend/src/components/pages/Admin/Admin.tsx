@@ -10,6 +10,8 @@ import { useTranslation } from "react-i18next";
 import CreateTeam from "../../widgets/CreateTeams/CreateTeams";
 import { UserList } from "../AdminEventPage/AdminEventAPI";
 import { useEffect, useState } from "react";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../../shared/ui/card"
+
 
 const AdminPage = () => {
   const { t } = useTranslation();
@@ -34,22 +36,30 @@ var result = window.location.pathname.substring(index);
         });
     }, []);
   return (
-    <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel defaultSize={95} maxSize={95}>
+    <ResizablePanelGroup className={less["full-content"]} direction="horizontal">
+      <ResizablePanel defaultSize={60} maxSize={60}>
         <div className={less["main-admin"]}>
-          <Button>{t("EditTree")}</Button>
           <CreateTeam />
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel>
+      <h4>Members: {players.length}</h4>
       {players.map((event) => (
-        <div>{event.first_name}</div>
+        <Card className={`${less["card"]} flex flex-row `}>
+        <div className="flex flex-col">
+          <CardHeader className="p-0">
+            <CardTitle className="p-0">{`${event.first_name} | ${event.email}`}</CardTitle>
+          </CardHeader >
+          <CardContent className="p-0 mt-2">
+            <p>{t("skills")}:</p>
+            <p>{event.bio}</p>
+        
+          </CardContent>
+          </div>
+        </Card>
       ))}
-        <PlayerCard />
-        <PlayerCard />
-        <PlayerCard />
-        <PlayerCard />
+
       </ResizablePanel>
     </ResizablePanelGroup>
   );
