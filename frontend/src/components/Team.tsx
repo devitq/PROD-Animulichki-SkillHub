@@ -34,24 +34,30 @@ const teamList: TeamProps[] = [
     imageUrl: "https://cdn.discordapp.com/avatars/745800190413373472/db4cd19e6d80f9cfa29e09a43ddbcb28",
     name: "Pigeon",
     position: "Backend Developer",
-    socialNetworks: [],
+    socialNetworks: [
+      { name: "GitHub", url: "https://github.com/FlyingPigeon-py" },
+    ],
   },
   {
     imageUrl: "https://cdn.discordapp.com/avatars/875043365815717888/2a6ddca40c178c5e91a55c52889f8a98",
     name: "Timkaoch",
     position: "Backend Developer",
-    socialNetworks: [],
+    socialNetworks: [
+      { name: "GitHub", url: "https://github.com/Timur-liceist" },
+    ],
   },
   {
     imageUrl: "https://cdn.discordapp.com/avatars/743444918197944400/6dcfc04c3931fa5c89e9580eb5f7c655",
     name: "Data Name ID",
     position: "Backend Developer",
-    socialNetworks: [],
+    socialNetworks: [
+      { name: "GitHub", url: "https://github.com/Data-Name-ID" },
+    ],
   },
   {
     imageUrl: "https://cdn.discordapp.com/avatars/545655609005965345/78d2c594eb858d3bb393928a67ef8731",
-    name: " 👉👈 \n  OMGKawaiiQueli!",
-    position: "Super-duper Main Frontend Developer ",
+    name: "OMGKawaiiQueli!",
+    position: "Frontend Developer",
     socialNetworks: [
       { name: "GitHub", url: "https://github.com/cu-e" },
     ],
